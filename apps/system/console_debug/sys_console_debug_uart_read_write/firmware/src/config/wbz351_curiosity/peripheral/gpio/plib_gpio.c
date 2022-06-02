@@ -62,19 +62,19 @@ void GPIO_Initialize ( void )
     CFG_REGS->CFG_CFGCON0CLR = CFG_CFGCON0_JTAGEN_Msk;
 
           /* PORTA Initialization */
-    GPIOA_REGS->GPIO_CNPUSET = 0x10; /* Pull-Up Enable */
+    GPIOA_REGS->GPIO_CNPUSET = 0x10U; /* Pull-Up Enable */
     /* PORTB Initialization */
-    GPIOB_REGS->GPIO_LAT = 0x80; /* Initial Latch Value */
-    GPIOB_REGS->GPIO_TRISCLR = 0xa9; /* Direction Control */
-    GPIOB_REGS->GPIO_ANSELCLR = 0xa9; /* Digital Mode Enable */
-    GPIOB_REGS->GPIO_CNPUSET = 0x200; /* Pull-Up Enable */
+    GPIOB_REGS->GPIO_LAT = 0x80U; /* Initial Latch Value */
+    GPIOB_REGS->GPIO_TRISCLR = 0xa9U; /* Direction Control */
+    GPIOB_REGS->GPIO_ANSELCLR = 0xa9U; /* Digital Mode Enable */
+    GPIOB_REGS->GPIO_CNPUSET = 0x200U; /* Pull-Up Enable */
 
 
     /* PPS Input Remapping */
-    PPS_REGS->PPS_SCOM0P1R = 3;
+    PPS_REGS->PPS_SCOM0P1R = 3U;
 
     /* PPS Output Remapping */
-    PPS_REGS->PPS_RPA5G3R = 2;
+    PPS_REGS->PPS_RPA5G3R = 2U;
 
 
 }
