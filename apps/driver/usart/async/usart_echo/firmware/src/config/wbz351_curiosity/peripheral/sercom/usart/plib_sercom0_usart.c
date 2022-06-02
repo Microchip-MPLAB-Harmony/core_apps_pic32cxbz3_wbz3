@@ -408,7 +408,8 @@ bool SERCOM0_USART_ReadAbort(void)
         sercom0USARTObj.rxBusyStatus = false;
 
         /* If required application should read the num bytes processed prior to calling the read abort API */
-        sercom0USARTObj.rxSize = sercom0USARTObj.rxProcessedSize = 0U;
+        sercom0USARTObj.rxSize = 0U;
+		sercom0USARTObj.rxProcessedSize = 0U;
     }
 
     return true;
