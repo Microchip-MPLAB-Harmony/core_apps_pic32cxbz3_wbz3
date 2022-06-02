@@ -176,6 +176,9 @@ const DRV_I2C_PLIB_INTERFACE drvI2C0PLibAPI = {
     /* I2C PLib Transfer Write Read Add function */
     .writeRead = (DRV_I2C_PLIB_WRITE_READ)SERCOM2_I2C_WriteRead,
 
+    /*I2C PLib Tranfer Abort function */
+    .transferAbort = (DRV_I2C_PLIB_TRANSFER_ABORT)SERCOM2_I2C_TransferAbort,
+
     /* I2C PLib Transfer Status function */
     .errorGet = (DRV_I2C_PLIB_ERROR_GET)SERCOM2_I2C_ErrorGet,
 
@@ -271,9 +274,11 @@ void SYS_Initialize ( void* data )
 
   
     CLK_Initialize();
-    /* Configure Prefetch, Wait States */
-    PCHE_REGS->PCHE_CHECON = (PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk))) 
-                                    | (PCHE_CHECON_PFMWS(1) | PCHE_CHECON_PREFEN(1));
+    /* Configure Prefetch, Wait States by calling the ROM function whose address is available at address 0xF2D0 */
+    typedef int (*FUNC_PCHE_SETUP)(uint32_t);
+    ((FUNC_PCHE_SETUP)(*(uint32_t*)0xF2D0))((PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
+                                    | (PCHE_CHECON_PFMWS(2) | PCHE_CHECON_PREFEN(1)));
+
 
 
 	GPIO_Initialize();
