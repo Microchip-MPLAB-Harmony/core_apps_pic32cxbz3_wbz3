@@ -67,29 +67,29 @@ void GPIO_Initialize ( void )
     CFG_REGS->CFG_CFGCON0CLR = CFG_CFGCON0_JTAGEN_Msk;
 
           /* PORTA Initialization */
-    GPIOA_REGS->GPIO_CNPUSET = 0x10; /* Pull-Up Enable */
+    GPIOA_REGS->GPIO_CNPUSET = 0x10U; /* Pull-Up Enable */
     /* Change Notice Enable */
     GPIOA_REGS->GPIO_CNCONSET = GPIO_CNCON_ON_Msk;
     GPIOA_REGS->GPIO_PORT;
     /* PORTB Initialization */
-    GPIOB_REGS->GPIO_LAT = 0x80; /* Initial Latch Value */
-    GPIOB_REGS->GPIO_TRISCLR = 0xa9; /* Direction Control */
-    GPIOB_REGS->GPIO_ANSELCLR = 0xa9; /* Digital Mode Enable */
-    GPIOB_REGS->GPIO_CNPUSET = 0x200; /* Pull-Up Enable */
+    GPIOB_REGS->GPIO_LAT = 0x80U; /* Initial Latch Value */
+    GPIOB_REGS->GPIO_TRISCLR = 0xa9U; /* Direction Control */
+    GPIOB_REGS->GPIO_ANSELCLR = 0xa9U; /* Digital Mode Enable */
+    GPIOB_REGS->GPIO_CNPUSET = 0x200U; /* Pull-Up Enable */
 
 
     /* PPS Input Remapping */
-    PPS_REGS->PPS_SCOM0P1R = 3;
+    PPS_REGS->PPS_SCOM0P1R = 3U;
 
     /* PPS Output Remapping */
-    PPS_REGS->PPS_RPA5G3R = 2;
+    PPS_REGS->PPS_RPA5G3R = 2U;
 
 
     uint32_t i;
     /* Initialize Interrupt Pin data structures */
     portPinCbObj[0 + 0].pin = GPIO_PIN_RA4;
     
-    for(i=0; i<1; i++)
+    for(i=0U; i<1; i++)
     {
         portPinCbObj[i].callback = NULL;
     }

@@ -554,7 +554,8 @@ static inline bool SERCOM0_USART_TxPushByte(uint16_t wrByte)
         {
             wrInIdx = wrInIndex << 1U;
 
-            SERCOM0_USART_WriteBuffer[wrInIdx++] = (uint8_t)wrByte;
+            SERCOM0_USART_WriteBuffer[wrInIdx] = (uint8_t)wrByte;
+			wrInIdx++;
             SERCOM0_USART_WriteBuffer[wrInIdx] = (uint8_t)(wrByte >> 8U);
         }
 
