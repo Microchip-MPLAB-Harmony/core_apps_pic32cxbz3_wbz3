@@ -1,0 +1,80 @@
+{
+	"metaDataVersion": "1.0.0",
+	"category": "com.microchip.ide.project",
+	"content": {
+		"metaDataVersion": "1.1.0",
+		"name": "com.microchip.mcu32.mplabx.project.core_apps_pic32cxbz3_wbz3_rtos_freertos_basic_freertos_wbz351_curiosity",
+		"version": "3.0.0",
+		"displayName": "FreeRTOS basic Example for PIC32CX BZ3 Family",
+		"projectName": "basic_freertos_wbz351_curiosity",
+		"shortDescription": "This example application blinks an LED to show the FreeRTOS threads that are running and to indicate status.",
+		"ide": {
+			"name": "MPLABX",
+			"semverRange": ">=6.0.0"
+		},
+		"compiler": [
+			{
+				"name": "XC32",
+				"semverRange": ">=4.1.0"
+			}
+		],
+		"dfp": {
+			"name": "PIC32CX-BZ3_DFP",
+			"semverRange": "^1.0.44"
+		},
+		"configurator": {
+			"name": "MHC",
+			"semverRange": ">=3.8.5"
+		},
+		"device": {
+			"metaDataVersion": "1.0.0",
+			"category": "com.microchip.portal.contentRef",
+			"content": {
+				"metaDataVersion": "1.0.0",
+				"category": "com.microchip.device",
+				"name": "WBZ351",
+				"versionRange": "*"
+			}
+		},
+		"author": "Microchip",
+		"subcategories": [
+			[
+				"Development Kit",
+				"WBZ351 Curiosity"
+			],
+			[
+				"Harmony",
+				"RTOS",
+				"FreeRTOS",
+				"BASIC_FREERTOS"
+			],
+			[
+				"RTOS",
+				"FreeRTOS",
+				"BASIC_FREERTOS"
+			]
+		],
+		"peripherals": [
+			"BASIC_FREERTOS"
+		],
+		"keywords": [
+			"MHC",
+			"Harmony",
+			"RTOS",
+			"FreeRTOS",
+			"WBZ351",
+			"PIC32CX BZ3 Family"
+		],
+		"additionalData": {
+			"longDescription": {
+				"metaDataVersion": "1.0.0",
+				"category": "com.microchip.portal.fileRef",
+				"content": {
+					"metaDataVersion": "1.0.0",
+					"fileName": "./../../readme.md",
+					"mimeType": "text/markdown"
+				}
+			}
+		}
+	}
+}
