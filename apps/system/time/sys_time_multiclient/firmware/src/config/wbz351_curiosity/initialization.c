@@ -56,7 +56,7 @@
 // ****************************************************************************
 
 /*** FUSERID ***/
-#pragma config USER_ID =      0xffff
+#pragma config USER_ID =      0xffffU
 
 /*** DEVCFG0 ***/
 #pragma config SWOEN =      ON
@@ -121,7 +121,7 @@
 
 
 /*** DEVCFG4 ***/
-#pragma config SOSCCFG =    0x0
+#pragma config SOSCCFG =    0x0U
 #pragma config RTCEVENT_SEL =      ONE_SEC
 #pragma config RTCEVENT_EN =      OFF
 #pragma config VBKP_1KCSEL =      _32K
@@ -155,6 +155,11 @@
 // Section: Driver Initialization Data
 // *****************************************************************************
 // *****************************************************************************
+/* Following MISRA-C rules are deviated in the below code block */
+/* MISRA C-2012 Rule 11.1 */
+/* MISRA C-2012 Rule 11.3 */
+/* MISRA C-2012 Rule 11.8 */
+
 
 
 // *****************************************************************************
@@ -179,7 +184,7 @@ SYSTEM_OBJECTS sysObj;
 // *****************************************************************************
 // <editor-fold defaultstate="collapsed" desc="SYS_TIME Initialization Data">
 
-const SYS_TIME_PLIB_INTERFACE sysTimePlibAPI = {
+static const SYS_TIME_PLIB_INTERFACE sysTimePlibAPI = {
     .timerCallbackSet = (SYS_TIME_PLIB_CALLBACK_REGISTER)TC0_TimerCallbackRegister,
     .timerStart = (SYS_TIME_PLIB_START)TC0_TimerStart,
     .timerStop = (SYS_TIME_PLIB_STOP)TC0_TimerStop,
@@ -189,7 +194,7 @@ const SYS_TIME_PLIB_INTERFACE sysTimePlibAPI = {
     .timerCounterGet = (SYS_TIME_PLIB_COUNTER_GET)TC0_Timer16bitCounterGet,
 };
 
-const SYS_TIME_INIT sysTimeInitData =
+static const SYS_TIME_INIT sysTimeInitData =
 {
     .timePlib = &sysTimePlibAPI,
     .hwTimerIntNum = TC0_IRQn,
@@ -216,6 +221,8 @@ const SYS_TIME_INIT sysTimeInitData =
  ********************************************************************************/
 static void STDIO_BufferModeSet(void)
 {
+    /* MISRAC 2012 deviation block start */
+    /* MISRA C-2012 Rule 21.6 deviated 2 times in this file.  Deviation record ID -  H3_MISRAC_2012_R_21_6_DR_3 */
 
     /* Make stdin unbuffered */
     setbuf(stdin, NULL);
@@ -225,7 +232,7 @@ static void STDIO_BufferModeSet(void)
 }
 
 
-
+/* MISRAC 2012 deviation block end */
 
 /*******************************************************************************
   Function:
@@ -239,16 +246,23 @@ static void STDIO_BufferModeSet(void)
 
 void SYS_Initialize ( void* data )
 {
+    /* MISRAC 2012 deviation block start */
+    /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
     STDIO_BufferModeSet();
 
 
   
     CLK_Initialize();
+    /* MISRAC 2012 deviation block start */
+    /* MISRA C-2012 Rule 11.1 deviated 1 time. Deviation record ID -  H3_MISRAC_2012_R_11_1_DR_1 */
+
     /* Configure Prefetch, Wait States by calling the ROM function whose address is available at address 0xF2D0 */
-    typedef int (*FUNC_PCHE_SETUP)(uint32_t);
-    ((FUNC_PCHE_SETUP)(*(uint32_t*)0xF2D0))((PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
+    typedef int (*FUNC_PCHE_SETUP)(uint32_t setup);
+    (void)((FUNC_PCHE_SETUP)(*(uint32_t*)0xF2D0))((PCHE_REGS->PCHE_CHECON & (~(PCHE_CHECON_PFMWS_Msk | PCHE_CHECON_ADRWS_Msk | PCHE_CHECON_PREFEN_Msk)))
                                     | (PCHE_CHECON_PFMWS(2) | PCHE_CHECON_PREFEN(1)));
+
+    /* MISRAC 2012 deviation block end */
 
 
 
@@ -263,13 +277,28 @@ void SYS_Initialize ( void* data )
 	BSP_Initialize();
 
 
+    /* MISRAC 2012 deviation block start */
+    /* Following MISRA-C rules deviated in this block  */
+    /* MISRA C-2012 Rule 11.3 - Deviation record ID - H3_MISRAC_2012_R_11_3_DR_1 */
+    /* MISRA C-2012 Rule 11.8 - Deviation record ID - H3_MISRAC_2012_R_11_8_DR_1 */
+
+
+    /* MISRA C-2012 Rule 11.3, 11.8 deviated below. Deviation record ID -  
+    H3_MISRAC_2012_R_11_3_DR_1 & H3_MISRAC_2012_R_11_8_DR_1*/
+        
     sysObj.sysTime = SYS_TIME_Initialize(SYS_TIME_INDEX_0, (SYS_MODULE_INIT *)&sysTimeInitData);
+    
+    /* MISRAC 2012 deviation block end */
 
 
+    /* MISRAC 2012 deviation block end */
     APP_Initialize();
 
 
     NVIC_Initialize();
+
+
+    /* MISRAC 2012 deviation block end */
 
 }
 
