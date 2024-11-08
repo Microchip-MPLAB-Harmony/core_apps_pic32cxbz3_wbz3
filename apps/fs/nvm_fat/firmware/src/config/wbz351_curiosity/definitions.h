@@ -65,8 +65,8 @@
 #include "system/cache/sys_cache.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
-#include "peripheral/nvm/plib_nvm.h"
 #include "bsp/bsp.h"
+#include "peripheral/nvm/plib_nvm.h"
 #include "app.h"
 
 
@@ -80,13 +80,13 @@ extern "C" {
 // DOM-IGNORE-END
 
 /* Device Information */
-#define DEVICE_NAME			 "WBZ351"
-#define DEVICE_ARCH			 "CORTEX-M4"
-#define DEVICE_FAMILY		 "PIC32CX_BZ3"
-#define DEVICE_SERIES		 "WBZ35"
+#define DEVICE_NAME          "WBZ351"
+#define DEVICE_ARCH          "CORTEX-M4"
+#define DEVICE_FAMILY        "PIC32CX_BZ3"
+#define DEVICE_SERIES        "WBZ35"
 
 /* CPU clock frequency */
-#define CPU_CLOCK_FREQUENCY 64000000
+#define CPU_CLOCK_FREQUENCY 64000000U
 
 // *****************************************************************************
 // *****************************************************************************
