@@ -89,6 +89,7 @@
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/mpu_prototypes.h</itemPath>
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/stream_buffer.h</itemPath>
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/message_buffer.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/mpu_syscall_numbers.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="portable" projectFiles="true">
             <logicalFolder name="f1" displayName="GCC" projectFiles="true">
@@ -227,7 +228,6 @@
     </logicalFolder>
     <logicalFolder name="ExternalFiles" displayName="Important Files" projectFiles="true">
       <itemPath>Makefile</itemPath>
-      <itemPath>../src/config/wbz351_curiosity/harmony-manifest-failure.yml</itemPath>
       <itemPath>../src/config/wbz351_curiosity/harmony-manifest-success.yml</itemPath>
       <itemPath>usart_echo_sync_wbz351_curiosity.mc3</itemPath>
     </logicalFolder>
@@ -239,9 +239,6 @@
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="f3" displayName="Script Files" projectFiles="true">
-    </logicalFolder>
-    <logicalFolder name="ScriptFiles" displayName="Script Files" projectFiles="true">
-      <itemPath>autoload.py</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="Source Files" projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
@@ -340,11 +337,11 @@
         <targetPluginBoard/>
         <platformTool>pkob4hybrid</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.21</languageToolchainVersion>
+        <languageToolchainVersion>4.45</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32CX-BZ3_DFP" vendor="Microchip" version="1.0.157"/>
+        <pack name="PIC32CX-BZ3_DFP" vendor="Microchip" version="1.2.183"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
       </packs>
       <ScriptingSettings>
